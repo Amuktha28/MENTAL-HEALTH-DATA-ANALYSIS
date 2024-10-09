@@ -8,22 +8,21 @@ The dataset had an imbalanced target variable. To avoid bias towards the majorit
 
 # 2. Model Selection: 
 RandomForestClassifier: The RandomForestClassifier from sklearn was chosen for its ability to handle both linear and non-linear data distributions. As an ensemble method, RandomForest provides robust predictions by combining the results of multiple decision trees.
-
-# 3. n_estimators=100: 
+n_estimators=100: 
 The number of decision trees in the forest.
 max_depth=None: No limit was set for the depth of trees, allowing the model to capture complex interactions.
 Random state=42: Ensured reproducibility of the results.
-# 4. Training and Validation:
+# 3. Training and Validation:
 The data was preprocessed, balanced using SMOTE, and then split into training and testing sets. The model was trained on the training data, and hyperparameters were optimized to achieve the best balance between training time and model accuracy.
 
-# 5. Evaluation Metrics: Model performance was evaluated using multiple metrics:
+# 4. Evaluation Metrics: Model performance was evaluated using multiple metrics:
 
 Accuracy: Measured overall correctness of predictions.
 Precision: Focused on the proportion of true positive predictions.
 Recall: Assessed how many of the actual positives were identified correctly.
 F1 Score: A balanced measure combining both precision and recall.
 AUC-ROC: Indicated the model's ability to discriminate between the two classes, with a higher value demonstrating better performance.
-# 6.Confusion Matrix: 
+# 5.Confusion Matrix: 
 The confusion matrix gave a granular view of the classification performance:
 True Negatives (TN): Correctly classified negative cases.
 False Positives (FP): Incorrectly classified positive cases.
