@@ -54,13 +54,14 @@ Model 7 (RF + GB + LR): Combines all three models.
 # 4. Training and Validation
 
 The model was trained on a clean, preprocessed dataset. The data pipeline helped automate preprocessing, ensuring the test data undergoes the same transformation.
-No additional hyperparameter tuning was mentioned, though RandomForest hyperparameters can be fine-tuned to improve performance.
+No additional hyperparameter tuning was mentioned, though RandomForest  and gradient-boosting hyperparameters can be fine-tuned to improve performance.
 
 # 5.Evaluation Metrics
 
-Accuracy: The model achieved an accuracy of 97.69%, indicating strong performance overall.
-Classification Report: This shows high precision and recall for class 0, while class 1 has slightly lower precision but high recall (suggesting fewer false negatives).
-AUC-ROC: 0.994: This near-perfect AUC-ROC score indicates the model is excellent at distinguishing between the two classes.
+- Random Forest (Model 1) achieved an accuracy of 97.65% with an AUC-ROC score of 0.9939, showing excellent performance in distinguishing between the classes.
+- Gradient Boosting (Model 2) performed similarly with an accuracy of 97.62% and an AUC-ROC of 0.9938.
+- Logistic Regression (Model 3), though slightly less accurate at 96.91%, provided valuable insights, especially when combined with other models.
+- Ensembles (Models 4–7) improved upon individual models, with Model 4 (RF + GB) showing the highest accuracy of 97.72% and an AUC-ROC score of 0.9943.
 
 # 6.Confusion Matrix
 
