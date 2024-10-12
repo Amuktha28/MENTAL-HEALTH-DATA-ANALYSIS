@@ -1,19 +1,56 @@
 # gst
 This project involves building a predictive model using GST (Goods and Services Tax) data to predict the target variable based on input features. The dataset provided is preprocessed to handle missing values, categorical variables, and scaling. The model used is a Random Forest Classifier.
+We are tasked with creating a predictive model that accurately estimates the target variable (Y) based on given input features (X). The goal is to build, optimize, and evaluate models that generalize well on unseen test data.
 
-# Key Methodology
-# 1. Handling Imbalanced Data 
-The model does not specifically mention handling imbalanced data. However, further techniques like over-sampling or under-sampling could be applied depending on the distribution of classes in the target data (observed from classification reports).
+The data is split into training and test sets:
+Training Set (D_train): Used to train the models.
+Test Set (D_test): Used to evaluate model performance on unseen data.
 
-# 2.Model Selection: RandomForestClassifier
+### Objective
+To build a robust predictive model with high accuracy and performance metrics, ensuring it generalizes well on unseen data. We also aim to tune, evaluate, and combine models for optimal performance.
 
-The RandomForestClassifier was chosen because it can handle both linear and non-linear data patterns and is effective in reducing overfitting through the ensemble of decision trees.
-n_estimators=100: 100 trees are used to create a diverse and strong model.
+---
 
-# 3.Preprocessing and Data Transformation
+## Step-by-Step Explanation of Code and Approach
 
-A preprocessing pipeline was created to handle missing values, scale numeric features, and encode categorical variables (though none were present here).
-StandardScaler ensures that all features contribute equally to the model, which is important for certain algorithms, such as neural networks.
+# 1. Data Preprocessing
+
+The first step is preparing the data for machine learning models. We use pandas to load the data and drop the unnecessary ID column, which is irrelevant for modeling.
+The ID column is a unique identifier that doesn't contribute to prediction, and dropping it helps to focus on the relevant features.
+
+# 2. Preprocessing Pipeline
+
+To prepare the features for modeling, we define a pipeline using ColumnTransformer and StandardScaler. The pipeline does the following:
+Numerical columns: Missing values are imputed using the mean, and the features are scaled.
+Categorical columns: Encoded using one-hot encoding to convert them into numerical format.
+
+
+
+# 3. Hyperparameter Tuning for Individual Models*
+
+Random Forest (Model 1)*
+
+Random Forest is an ensemble of decision trees that improves performance by averaging multiple trees. We use GridSearchCV to optimize hyperparameters like n_estimators, max_depth, and min_samples_split.
+Random Forest works well for classification tasks as it reduces overfitting and handles both continuous and categorical features effectively.
+
+Gradient Boosting (Model 2)
+
+Gradient Boosting is another ensemble technique that builds trees sequentially, each correcting errors made by the previous one. We also tune its hyperparameters.
+
+Logistic Regression (Model 3)
+
+Logistic Regression is a simple yet effective linear model for binary classification problems. We train it with default parameters.
+Logistic Regression is easy to interpret and often serves as a good baseline model for classification tasks.
+
+# 4. Combining Models Using Voting Classifier
+
+Ensemble learning helps improve model performance by combining the strengths of multiple models. We combine different models using VotingClassifier, which allows for both hard and soft voting:
+
+Model 4 (RF + GB): Combines random forest and is equal to the model, which is important for certain algorithms, such as neural networks.
+Model 5 (RF + LR): Combines Random Forest and Logistic Regression.
+Model 6 (GB + LR): Combines Gradient Boosting and Logistic Regression.
+Model 7 (RF + GB + LR): Combines all three models.
+
 # 4. Training and Validation
 
 The model was trained on a clean, preprocessed dataset. The data pipeline helped automate preprocessing, ensuring the test data undergoes the same transformation.
